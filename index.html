@@ -78,6 +78,15 @@ button {
 
 </style>
 <script>
+
+    window.onload = function() {
+    let password = prompt("Enter the secret password:");
+    
+    if (password !== "02112006") { // Change this to your desired password
+        window.location.href = "404.html"; // Redirects to a broken link page
+    }
+};
+    
     document.getElementById('yesButton').addEventListener('click', function() {
     document.getElementById('popup').classList.add('active');
 });
