@@ -4,89 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Letter</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <style>
+        body {
+            background-image: url('letter.jpg'); /* Same background as index.html */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+        }
+
+        .letter-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            width: 300px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .click-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff4d6d;
+        }
+
+        .letter-content {
+            display: none; /* Hidden initially */
+            font-size: 16px;
+            color: black;
+        }
+
+        .letter-box.opened .click-text {
+            display: none; /* Hide the 'Click to open' text when opened */
+        }
+
+        .letter-box.opened .letter-content {
+            display: block; /* Show message when opened */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="letter" id="letter">
-            <p>CLICK TO OPEN</p>
+        <div class="letter-box" id="letterBox">
+            <p class="click-text">Click to open</p>
+            <div class="letter-content">
+                <p>Dear Love,</p>
+                <p>You are the most special person in my life. Happy Valentine's Day! ❤️</p>
+            </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('letterBox').addEventListener('click', function() {
+            this.classList.add('opened');
+        });
+    </script>
 </body>
-
-<style>
-    .letter {
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.letter.revealed {
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-body {
-    background-image: url('letter.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container {
-    text-align: center;
-    color: white;
-}
-
-.content {
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-}
-
-button {
-    background-color: pink;
-    color: white;
-    padding: 10px 20px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.popup.active {
-    display: flex;
-}
-
-</style>
 </html>
-
-<script>
-    document.getElementById('letter').addEventListener('click', function() {
-        this.classList.toggle('revealed');
-    });
-</script>
